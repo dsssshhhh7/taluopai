@@ -14,10 +14,10 @@ export const shuffleDeck = <T,>(items: T[]): T[] => {
 
 const randomOrientation = (): Orientation => (Math.random() > 0.5 ? 'upright' : 'reversed');
 
-// 每次抽牌前都会先洗牌，再按当前牌阵需要的数量取牌。
+// 保留通用抽牌工具，方便后续新增“自动抽牌”或测试逻辑。
 export const drawCards = (deck: TarotCardData[], spread: SpreadConfig): DrawnCard[] =>
   shuffleDeck(deck)
-    .slice(0, spread.positions.length)
+    .slice(0, spread.cardCount)
     .map((card, index) => ({
       card,
       orientation: randomOrientation(),

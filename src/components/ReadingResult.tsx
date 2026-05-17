@@ -1,20 +1,16 @@
-import { TarotCard } from './TarotCard';
-import type { DrawnCard, SpreadType } from '../types/tarot';
+import { ReadingSummary } from './ReadingSummary';
+import { SpreadLayout } from './SpreadLayout';
+import type { DrawnCard, SpreadConfig } from '../types/tarot';
 
 interface ReadingResultProps {
   cards: DrawnCard[];
-  spreadId: SpreadType;
+  spread: SpreadConfig;
+  question: string;
   guideText: string;
   onReveal: (index: number) => void;
 }
 
-const layoutClass: Record<SpreadType, string> = {
-  single: 'grid-cols-1 max-w-md',
-  three: 'grid-cols-1 sm:grid-cols-3 max-w-5xl',
-  hexagram: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl',
-};
-
-export function ReadingResult({ cards, spreadId, guideText, onReveal }: ReadingResultProps) {
+export function ReadingResult({ cards, spread, question, guideText, onReveal }: ReadingResultProps) {
   if (cards.length === 0) return null;
 
   const allRevealed = cards.every((item) => item.isRevealed);
@@ -28,14 +24,9 @@ export function ReadingResult({ cards, spreadId, guideText, onReveal }: ReadingR
         </p>
       </div>
 
-      <div className={`mx-auto grid gap-6 ${layoutClass[spreadId]}`}>
-        {cards.map((drawnCard, index) => (
-          <TarotCard
-            key={`${drawnCard.card.id}-${drawnCard.position}`}
-            drawnCard={drawnCard}
-            onReveal={() => onReveal(index)}
-          />
-        ))}
+      <SpreadLayout cards={cards} spread={spread} onReveal={onReveal} />
+      <div id="reading-summary">
+        <ReadingSummary question={question} spread={spread} cards={cards} />
       </div>
     </section>
   );

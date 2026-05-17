@@ -1,6 +1,26 @@
 export type TarotType = 'major' | 'minor';
 export type Orientation = 'upright' | 'reversed';
-export type SpreadType = 'single' | 'three' | 'hexagram';
+
+export type SpreadType =
+  | 'single'
+  | 'universal'
+  | 'core-solution'
+  | 'choice'
+  | 'grand-cross'
+  | 'hexagram'
+  | 'inspiration'
+  | 'celtic-cross';
+
+export type SpreadLayoutType =
+  | 'single'
+  | 'three'
+  | 'core'
+  | 'choice'
+  | 'cross'
+  | 'hexagram'
+  | 'inspiration'
+  | 'celtic';
+
 export type ThemeName = 'classic' | 'starry' | 'minimal';
 
 export interface TarotCardData {
@@ -14,16 +34,27 @@ export interface TarotCardData {
   imagePath: string;
 }
 
+export interface SpreadPosition {
+  index: number;
+  name: string;
+  description: string;
+}
+
 export interface DrawnCard {
   card: TarotCardData;
   orientation: Orientation;
-  position: string;
+  position: SpreadPosition;
   isRevealed: boolean;
 }
 
 export interface SpreadConfig {
   id: SpreadType;
   name: string;
+  cardCount: number;
   description: string;
-  positions: string[];
+  suitableFor: string;
+  examples: string[];
+  positions: SpreadPosition[];
+  layout: SpreadLayoutType;
+  modes?: string[];
 }

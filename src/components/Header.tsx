@@ -1,15 +1,10 @@
-import { Moon, Music, Music2, Sparkles } from 'lucide-react';
+import { Moon, Sparkles } from 'lucide-react';
 import { themeLabels, useTheme } from './ThemeProvider';
 import type { ThemeName } from '../types/tarot';
 
-interface HeaderProps {
-  soundEnabled: boolean;
-  onToggleSound: () => void;
-}
-
 const themes = Object.keys(themeLabels) as ThemeName[];
 
-export function Header({ soundEnabled, onToggleSound }: HeaderProps) {
+export function Header() {
   const { theme, setTheme } = useTheme();
 
   return (
@@ -42,17 +37,6 @@ export function Header({ soundEnabled, onToggleSound }: HeaderProps) {
               </button>
             ))}
           </div>
-
-          <button
-            type="button"
-            className="inline-flex h-10 items-center gap-2 rounded-full border border-[rgb(var(--color-line-rgb)/0.76)] px-4 text-sm text-[var(--color-text)] transition hover:border-[rgb(var(--color-accent-rgb)/0.8)]"
-            onClick={onToggleSound}
-            aria-pressed={soundEnabled}
-            title="切换音效"
-          >
-            {soundEnabled ? <Music2 size={17} aria-hidden="true" /> : <Music size={17} aria-hidden="true" />}
-            {soundEnabled ? '音效开' : '音效关'}
-          </button>
 
           <Moon className="hidden text-[var(--color-muted)] sm:block" size={18} aria-hidden="true" />
         </div>
