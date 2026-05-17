@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="630" viewBox="0 0 420 630" role="img" aria-label="恋人 Tarot Card">
+  <defs>
+    <radialGradient id="halo" cx="50%" cy="36%" r="62%">
+      <stop offset="0%" stop-color="#f0a6b2" stop-opacity="0.92"/>
+      <stop offset="42%" stop-color="#f0a6b2" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#43213f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="paper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff3d0"/>
+      <stop offset="42%" stop-color="#d9b76d"/>
+      <stop offset="100%" stop-color="#43213f"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="630" rx="30" fill="#43213f"/>
+  <rect x="18" y="18" width="384" height="594" rx="22" fill="url(#paper)" opacity="0.9"/>
+  <rect x="28" y="28" width="364" height="574" rx="18" fill="#43213f" opacity="0.86"/>
+  <rect x="42" y="42" width="336" height="546" rx="14" fill="none" stroke="#f0a6b2" stroke-width="2.4" opacity="0.72"/>
+  <rect x="58" y="58" width="304" height="514" rx="8" fill="none" stroke="#fff3c4" stroke-width="1" opacity="0.34"/>
+  <circle cx="210" cy="250" r="154" fill="url(#halo)"/>
+  <path d="M82 435 C132 360 156 280 142.73519704682792 192.8576243513472 C262 306 292 358 338 435" fill="none" stroke="#f0a6b2" stroke-width="4" opacity="0.42"/>
+  <path d="M98 458 C154 424 268 424 324 458" fill="none" stroke="#fff5cf" stroke-width="2" opacity="0.28"/>
+  <circle cx="210" cy="250" r="92" fill="none" stroke="#f0a6b2" stroke-width="2.5" opacity="0.74"/>
+  <circle cx="210" cy="250" r="62" fill="none" stroke="#fff5cf" stroke-width="1.5" opacity="0.42"/>
+  <text x="210" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="88" fill="#f0a6b2">♡</text>
+  <text x="210" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#fff2c9" letter-spacing="3">MAJOR</text>
+  <text x="210" y="120" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="26" fill="#f0a6b2" font-weight="700">恋人</text>
+  <text x="210" y="515" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#fff2c9">The Lovers</text>
+  <text x="210" y="548" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#f0a6b2" letter-spacing="4">06</text>
+  <g opacity="0.58" fill="#f0a6b2">
+    <circle cx="94" cy="94" r="4"/>
+    <circle cx="326" cy="94" r="4"/>
+    <circle cx="94" cy="536" r="4"/>
+    <circle cx="326" cy="536" r="4"/>
+  </g>
+  <g opacity="0.08" stroke="#fff6d1" stroke-width="1">
+    <path d="M60 160 H360"/>
+    <path d="M60 472 H360"/>
+    <path d="M126 58 V572"/>
+    <path d="M294 58 V572"/>
+  </g>
+</svg>
