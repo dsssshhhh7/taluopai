@@ -1,10 +1,10 @@
 import { useMemo, useRef, useState } from 'react';
 import { RotateCcw, Sparkle } from 'lucide-react';
+import { CardCarousel } from './components/CardCarousel';
 import { Header } from './components/Header';
 import { QuestionInput } from './components/QuestionInput';
 import { ReadingResult } from './components/ReadingResult';
 import { SpreadSelector } from './components/SpreadSelector';
-import { TarotCard } from './components/TarotCard';
 import { tarotDeck } from './data/tarotDeck';
 import { getSpreadById, spreads } from './data/spreads';
 import type { DrawnCard, Orientation, SpreadType, TarotCardData } from './types/tarot';
@@ -81,29 +81,28 @@ function App() {
     resetReadingState();
   };
 
-  const handleSelectCard = (card: TarotCardData) => {
+  const handleDrawMoment = (card: TarotCardData) => {
     if (!isSelecting || selectedCards.some((item) => item.card.id === card.id)) return;
 
     const nextIndex = selectedCards.length;
-    const nextSelectedCards = [
+    const nextSelectedCards: DrawnCard[] = [
       ...selectedCards,
       {
         card,
         orientation: randomOrientation(),
         position: selectedSpread.positions[nextIndex],
-        isRevealed: false,
+        isRevealed: true,
       },
     ];
 
     setSelectedCards(nextSelectedCards);
 
-    // 选满后稍作停顿，让最后一张牌的选中特效完整出现，再进入翻牌结果区。
     if (nextSelectedCards.length === requiredCount) {
       window.setTimeout(() => {
         setDrawnCards(nextSelectedCards);
         setIsSelecting(false);
         scrollToSummary();
-      }, 620);
+      }, 720);
     }
   };
 
@@ -162,42 +161,14 @@ function App() {
                 onReveal={handleReveal}
               />
             ) : (
-              <section className="mt-10">
-                <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                  <div>
-                    <h3 className="font-display text-2xl font-semibold">
-                      {isSelecting ? `请亲手选择 ${requiredCount} 张牌` : '完整牌组'}
-                    </h3>
-                    <p className="mt-1 text-sm text-[var(--color-muted)]">
-                      {isSelecting
-                        ? `已选择 ${selectedCards.length} / ${requiredCount}。选中的牌会带着光环进入你的牌阵。`
-                        : '输入问题并开始洗牌后，牌面会翻为牌背，由你亲手完成抽牌。'}
-                    </p>
-                  </div>
-                  <span className="text-sm text-[var(--color-muted)]">{tarotDeck.length} / 78</span>
-                </div>
-
-                <div className={`deck-grid ${isShuffling ? 'is-shuffling' : ''} ${isSelecting ? 'selecting-mode' : ''}`}>
-                  {previewDeck.map((card) => {
-                    const selectedIndex = selectedCards.findIndex((item) => item.card.id === card.id);
-                    const isSelected = selectedIndex >= 0;
-                    const selectionFull = selectedCards.length >= requiredCount;
-
-                    return (
-                      <TarotCard
-                        key={card.id}
-                        previewCard={card}
-                        compact
-                        showBackOnly={isSelecting}
-                        isSelected={isSelected}
-                        selectionOrder={isSelected ? selectedIndex + 1 : undefined}
-                        disabled={isSelecting && (isSelected || selectionFull)}
-                        onSelect={isSelecting ? () => handleSelectCard(card) : undefined}
-                      />
-                    );
-                  })}
-                </div>
-              </section>
+              <CardCarousel
+                deck={previewDeck}
+                selectedCards={selectedCards}
+                requiredCount={requiredCount}
+                isActive={isSelecting}
+                isShuffling={isShuffling}
+                onDraw={handleDrawMoment}
+              />
             )}
           </div>
 

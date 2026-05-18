@@ -166,6 +166,217 @@ button {
   box-shadow: 0 12px 34px rgb(0 0 0 / 0.22);
 }
 
+.carousel-shell {
+  animation: summaryFadeIn 520ms ease both;
+}
+
+.fate-stream {
+  position: relative;
+  height: clamp(240px, 29vw, 320px);
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(var(--color-line-rgb) / 0.62);
+  background:
+    radial-gradient(circle at 50% 50%, rgb(var(--color-accent-rgb) / 0.18), transparent 33%),
+    linear-gradient(90deg, transparent, rgb(var(--color-panel-rgb) / 0.58), transparent);
+  box-shadow: inset 0 0 48px rgb(0 0 0 / 0.24);
+}
+
+.fate-stream::before,
+.fate-stream::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 14;
+  width: 18%;
+  pointer-events: none;
+}
+
+.fate-stream::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--color-bg), transparent);
+}
+
+.fate-stream::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--color-bg), transparent);
+}
+
+.fate-stream.is-shuffling .fate-card-slot {
+  animation: shufflePulse 780ms ease-in-out infinite;
+}
+
+.fate-track {
+  position: absolute;
+  inset: 0;
+}
+
+.fate-card-slot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(78px, 11vw, 116px);
+  transform-origin: center;
+  will-change: transform, opacity;
+  transition:
+    opacity 360ms ease,
+    filter 360ms ease;
+}
+
+.fate-card-slot.is-center {
+  filter: drop-shadow(0 0 26px rgb(var(--color-accent-rgb) / 0.72));
+}
+
+.fate-card-slot.is-center .card-3d {
+  border-color: rgb(var(--color-accent-rgb) / 0.9);
+}
+
+.fate-center-zone {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 12;
+  display: grid;
+  width: clamp(118px, 17vw, 168px);
+  aspect-ratio: 2 / 3;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 0.8rem;
+  border: 1px solid rgb(var(--color-accent-rgb) / 0.88);
+  background: rgb(var(--color-accent-rgb) / 0.08);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.08),
+    0 0 34px rgb(var(--color-accent-rgb) / 0.58),
+    inset 0 0 28px rgb(var(--color-accent-rgb) / 0.18);
+  pointer-events: none;
+  animation: centerZonePulse 2200ms ease-in-out infinite;
+}
+
+.fate-center-zone::before,
+.fate-center-zone::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 999px;
+  border: 1px solid rgb(var(--color-accent-rgb) / 0.35);
+}
+
+.fate-center-zone::after {
+  inset: 26px;
+  border-style: dashed;
+  animation: magicRotate 12000ms linear infinite;
+}
+
+.magic-ring {
+  position: absolute;
+  width: 68%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 1px solid rgb(var(--color-accent-rgb) / 0.5);
+}
+
+.magic-ring-inner {
+  width: 42%;
+  border-style: dashed;
+  animation: magicRotate 9000ms linear infinite reverse;
+}
+
+.hexagram-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 30;
+  display: grid;
+  width: clamp(128px, 19vw, 186px);
+  aspect-ratio: 1;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: hexagramBurst 900ms ease-out both;
+}
+
+.hexagram-star,
+.hexagram-star::before,
+.hexagram-star::after {
+  position: absolute;
+  width: 72%;
+  aspect-ratio: 1;
+}
+
+.hexagram-star {
+  filter: drop-shadow(0 0 18px rgb(var(--color-accent-rgb) / 0.95));
+  animation: hexagramSpin 900ms ease-out both;
+}
+
+.hexagram-star::before,
+.hexagram-star::after {
+  content: "";
+  left: 14%;
+  top: 2%;
+  background: rgb(var(--color-accent-rgb) / 0.82);
+  clip-path: polygon(50% 0, 96% 82%, 4% 82%);
+}
+
+.hexagram-star::after {
+  top: 16%;
+  transform: rotate(180deg);
+}
+
+.hexagram-orbit {
+  position: absolute;
+  width: 96%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 1px solid rgb(var(--color-accent-rgb) / 0.78);
+  box-shadow:
+    0 0 18px rgb(var(--color-accent-rgb) / 0.72),
+    inset 0 0 18px rgb(var(--color-accent-rgb) / 0.32);
+  animation: hexagramOrbit 900ms ease-out both;
+}
+
+.hexagram-spark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgb(var(--color-accent-rgb) / 0.96);
+  box-shadow: 0 0 14px rgb(var(--color-accent-rgb) / 0.92);
+  animation: hexagramSpark 900ms ease-out both;
+}
+
+.spark-1 {
+  --spark-angle: 0deg;
+}
+
+.spark-2 {
+  --spark-angle: 60deg;
+}
+
+.spark-3 {
+  --spark-angle: 120deg;
+}
+
+.spark-4 {
+  --spark-angle: 180deg;
+}
+
+.spark-5 {
+  --spark-angle: 240deg;
+}
+
+.spark-6 {
+  --spark-angle: 300deg;
+}
+
+.drawn-card-stage {
+  width: min(100%, 320px);
+  margin: 28px auto 0;
+  animation: drawnCardAppear 780ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
 .deck-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
@@ -602,10 +813,101 @@ button {
   }
 }
 
+@keyframes centerZonePulse {
+  0%,
+  100% {
+    opacity: 0.78;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.035);
+  }
+}
+
+@keyframes magicRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hexagramBurst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.34);
+    filter: brightness(1.6);
+  }
+  18% {
+    opacity: 1;
+  }
+  72% {
+    opacity: 0.92;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.24);
+    filter: brightness(1);
+  }
+}
+
+@keyframes hexagramSpin {
+  from {
+    transform: rotate(-24deg) scale(0.72);
+  }
+  to {
+    transform: rotate(36deg) scale(1.02);
+  }
+}
+
+@keyframes hexagramOrbit {
+  from {
+    transform: rotate(0deg) scale(0.68);
+  }
+  to {
+    transform: rotate(180deg) scale(1.12);
+  }
+}
+
+@keyframes hexagramSpark {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateX(10px) scale(0.4);
+  }
+  26% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateX(86px) scale(0.9);
+  }
+}
+
+@keyframes drawnCardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.9);
+    filter: brightness(1.35);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: brightness(1);
+  }
+}
+
 @media (max-width: 640px) {
   .deck-grid {
     grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
     gap: 9px;
+  }
+
+  .fate-stream {
+    height: clamp(180px, 58vw, 240px);
+  }
+
+  .fate-card-slot {
+    width: clamp(64px, 21vw, 86px);
   }
 
   .spread-board {

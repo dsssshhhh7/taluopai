@@ -15,7 +15,7 @@ export const themeLabels: Record<ThemeName, string> = {
 };
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<ThemeName>('classic');
+  const [theme, setTheme] = useState<ThemeName>('starry');
 
   const value = useMemo(() => ({ theme, setTheme }), [theme]);
 

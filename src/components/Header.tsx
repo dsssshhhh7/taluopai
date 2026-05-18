@@ -2,7 +2,7 @@ import { Moon, Sparkles } from 'lucide-react';
 import { themeLabels, useTheme } from './ThemeProvider';
 import type { ThemeName } from '../types/tarot';
 
-const themes = Object.keys(themeLabels) as ThemeName[];
+const themes: ThemeName[] = ['starry', 'classic', 'minimal'];
 
 export function Header() {
   const { theme, setTheme } = useTheme();
